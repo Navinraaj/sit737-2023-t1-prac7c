@@ -1,0 +1,8 @@
+{"level":"error","message":"Division by zero","service":"calculate-service"}
+{"level":"error","message":"Error: Division by zero","service":"calculate-service"}
+{"level":"error","message":"n2 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"Error: n2 incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"n2 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"Error: n2 incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"n1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"Error: n1 incorrectly defined","service":"calculate-service"}
