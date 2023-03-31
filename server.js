@@ -11,8 +11,6 @@ const jwt = require('jsonwebtoken')
 const JWTstrategy = require("passport-jwt").Strategy;
 const fakeLocal = require("./fakeLocal.json");
 
-const users = []
-
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -26,15 +24,14 @@ app.use(session({
     saveUninitialized: false
   }))
 app.use(passport.session()) 
-app.use(passport.initialize())
-
-
 const initializePassport = require('./passport-config') 
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
   id => users.find(user => user.id === id)
 )
+
+app.use(passport.initialize())
 
 function getJwt() {
     console.log("in getJwt");
@@ -65,14 +62,17 @@ passport.use(
       }
     )
   );
+
+const users = []
+
 app.get('/', checkAuthenticated, (req, res) => {
-    res.render('calculator.ejs', { name: req.user.name })
+    res.render('index.ejs', { name: req.user.name })
   })
 
-  app.get('/Signup', checkNotAuthenticated, (req, res) => {
-    res.render('Signup.ejs')
+  app.get('/signup', checkNotAuthenticated, (req, res) => {
+    res.render('signup.ejs')
   })
-  app.post('/Signup', checkNotAuthenticated, async (req, res) => {
+  app.post('/signup', checkNotAuthenticated, async (req, res) => {
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
       users.push({
@@ -83,23 +83,23 @@ app.get('/', checkAuthenticated, (req, res) => {
       })
       res.redirect('/login')
     } catch {
-      res.redirect('/Signup')
+      res.redirect('/signup')
     }
   })
 app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs')
 })
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {successRedirect: '/calculator',failureRedirect: '/login',failureFlash: true}), (req, res) => {
-    const user = {
-      id: req.user.id,
-      name: req.user.name,
-      email: req.user.email
-    }
-    const token = jwt.sign(user ,process.env.ACCESS_TOKEN_SECRET);
-    res.json({ token : token });
-  });
+app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+    successRedirect: '/calculator',
+    failureRedirect: '/login',
+    failureFlash: true
+}))
 app.get('/calculator',checkAuthenticated,(req,res)=> { 
-    res.render('calculator');
+    res.render('index');
+});
+app.post('/getResult',passport.authenticate("jwt",{session: false}),(req,res) => {
+    let operation = req.query.op;
+    res.send(operation);
 });
 
 function checkAuthenticated(req, res, next) {
