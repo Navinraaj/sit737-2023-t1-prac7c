@@ -2,6 +2,8 @@ const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 const fs = require("fs");
+
+
 initialize = (passport, getUserByEmail, getUserById) => {
   const authenticateUser = async (email, password, done) => {
     const user = getUserByEmail(email)

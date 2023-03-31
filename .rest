@@ -1,6 +1,17 @@
-POST http://localhost:3000/login
+POST http://localhost:3000/signup
 
 Content-Type: application/json
+{
+"email": "tedgg@rsg.com",
+"password": "100",
+"name":"navin"
+}
+###
+
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
 {
 "email": "tedgg@rsg.com",
 "password": "1"
@@ -8,3 +19,4 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/calculator
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjp7ImlkIjoiMTY4MDI1MTYyNDYzMCIsIm5hbWUiOiJOYXZpbiBSYWFqIiwiZW1haWwiOiJ0ZWRnZ0Byc2cuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOTdWVFNBd1h5Mm1pbng1bTgvNDU1dS93cDRxdGo2cG9IY0Qub2svU2ZJYXhxaExDMTB4MXkifSwiaWF0IjoxNjgwMjUxNjQxfQ.7hD6Vl7MCEKBvdozrCOeL2qgXcTm2OCkr_gEuJ1c6j8
