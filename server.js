@@ -2,7 +2,7 @@ require('dotenv').config()
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
-const microserviceRoutes = require('./Ms');
+const microserviceRoutes = require('./ms');
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
