@@ -15,3 +15,61 @@
 {"level":"error","message":"Error: n2 incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"n1 is incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"Error: n1 incorrectly defined","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 30 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 40 and 70 received for subtraction","service":"calculate-service"}
+{"level":"info","message":"Parameters 40 and 0 received for subtraction","service":"calculate-service"}
+{"level":"info","message":"Parameters 40 and 0 received for division","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 0 received for division","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1100 and 10 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 1100 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1100 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1100 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1100 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 5 and 8 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 5 and 10 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 5 and 506 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 5 and 506 received for multiplication","service":"calculate-service"}
+{"level":"info","message":"Parameters 5 and 0 received for division","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
+{"level":"info","message":"Parameters 5 and 0 received for subtraction","service":"calculate-service"}
+{"level":"info","message":"Parameters 5 and 0 received for multiplication","service":"calculate-service"}
+{"level":"error","message":"number 2 is incorrectly defined","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 20 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 20 received for multiplication","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 0 received for division","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 100 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 100 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 100 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 100 received for multiplication","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 100 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 100 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 100 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 50 received for multiplication","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 50 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 50 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 50 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 50 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 50 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 80 and 50 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 340 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 340 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 340 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 340 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 340 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 340 and 0 received for division","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
+{"level":"info","message":"Parameters 10000 and 100 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 10000 and 100 received for multiplication","service":"calculate-service"}
+{"level":"info","message":"Parameters 100 and 10 received for subtraction","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 10 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 10000 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 100000000 received for division","service":"calculate-service"}
+{"level":"info","message":"Parameters 1000 and 100000000 received for multiplication","service":"calculate-service"}

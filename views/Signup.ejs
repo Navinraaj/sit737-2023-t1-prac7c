@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f1f1f1;
+        }
+        
+        .form-signin {
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 50px;
+        }
+        
+        .btn-signup {
+			background-color: #6c757d;
+			color: #fff;
+			width: 100%;
+			border-radius: 5px;
+			padding: 15px;
+			font-size: 16px;
+			margin-top: 20px;
+			border: none;
+			cursor: pointer;
+		}
+        .form-signin .form-control {
+            font-size: 16px;
+            height: 50px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .form-signin .btn {
+            font-size: 18px;
+            font-weight: bold;
+            height: 50px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+        
+        .form-signin .btn-login {
+            background-color: #007bff;
+            border: none;
+        }
+        
+        .form-signin .btn-signup {
+            background-color: #28a745;
+            border: none;
+        }
+        
+        .form-signin hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+        
+        .form-signin a {
+            color: #007bff;
+        }
+        
+        .form-signin label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form class="form-signin" action="/Signup" method="post">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Sign Up</h1>
+        <hr>
+        <label for="name">Name</label>
+        <input type="text" class="form-control" placeholder="Enter Name" id="name" name="name" required>
+        <label for="email" class="mt-3">Email</label>
+        <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" required>
+        <label for="psw" class="mt-3">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="password" id="psw" required>
+        <button type="submit" class="btn btn-lg btn-success btn-signup">Sign Up</button>
+        <div class="text-center mt-3">
+            <p>Already have an account? <a href="/login">Login</a>.</p>
+        </div>
+    </form>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+  </html>

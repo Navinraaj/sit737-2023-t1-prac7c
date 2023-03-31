@@ -6,3 +6,12 @@
 {"level":"error","message":"Error: n2 incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"n1 is incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"Error: n1 incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
+{"level":"error","message":"number 2 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}
