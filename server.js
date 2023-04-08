@@ -3,13 +3,13 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
 const microserviceRoutes = require('./ms');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const jwt = require('jsonwebtoken')
 const JWTstrategy = require("passport-jwt").Strategy;
-const fakeLocal = require("./fakeLocal.json");
+const fakeLocal = require("./fakelocal.json");
 
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
@@ -116,6 +116,8 @@ function checkNotAuthenticated(req, res, next) {
     next()
 }
 
-var server = app.listen(3000,() => {
+const port = 8080;
+const host = "0.0.0.0";
+var server = app.listen(port,host,() => {
     console.log('server is listening on port', server.address().port);
 });

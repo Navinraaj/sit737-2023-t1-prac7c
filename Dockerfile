@@ -1,13 +1,15 @@
-from node:16-alpine
+FROM node:16
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY . .
 
-EXPOSE 8080
-
 RUN npm install
+
+COPY server.js .
+
+EXPOSE 8080
 
 HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
 
-CMD ["npm","start"]
+CMD [ "node","server.js" ]

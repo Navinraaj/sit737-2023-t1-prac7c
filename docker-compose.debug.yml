@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sit737_2023_t1_prac5p:
+    image: sit737_2023_t1_prac5p
+  sit7372023t1prac4p:
+    image: sit7372023t1prac4p
+

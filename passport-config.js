@@ -1,5 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const fs = require("fs");
 
@@ -17,7 +17,7 @@ initialize = (passport, getUserByEmail, getUserById) => {
         console.log(token);
         // return token;
         fs.writeFile(
-            "fakeLocal.json",
+            "fakelocal.json",
             JSON.stringify({ Authorization: `Bearer ${token}` }),
             (err) => {
               if (err) throw err; // we might need to put this in a try catch, but we'll ignore it since it's unrelated to passport and auth.
