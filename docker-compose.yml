@@ -5,7 +5,19 @@ services:
     image: sit737_2023_t1_prac5d
     ports:
       - 49163:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: on-failure
   sit7372023t1prac4p:
     image: sit7372023t1prac4p
     ports:
       - 49164:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: on-failure
