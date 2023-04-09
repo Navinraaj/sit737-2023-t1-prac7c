@@ -1,8 +1,9 @@
 version: '3.4'
 
 services:
-  sit737_2023_t1_prac5p:
+  web1:
     image: sit737_2023_t1_prac5d
+    container_name: web1
     ports:
       - 49163:8080
     healthcheck:
@@ -11,8 +12,9 @@ services:
       timeout: 10s
       retries: 3
     restart: on-failure
-  sit7372023t1prac4p:
+  web2:
     image: sit7372023t1prac4p
+    container_name: web2
     ports:
       - 49164:8080
     healthcheck:
