@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  labels:
+    run: mypod
+spec:
+  containers:
+  - image: aaronspencedocker/node-web-app:latest
+    name: nodewebapp
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 3001
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  
+
