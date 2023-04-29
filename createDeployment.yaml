@@ -6,7 +6,6 @@ metadata:
     app: myapp
     tier: frontend
 spec:
-  # modify replicas according to your case
   replicas: 3
   selector:
     matchLabels:
@@ -17,7 +16,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: mynode
-        image: alamfaisal654/node-web-app:latest
-        ports:
-        - containerPort: 8080
+        - name: mynode
+          image: navinraaj/sit737_2023_t1_prac5d:latest
+          ports:
+            - containerPort: 8080
