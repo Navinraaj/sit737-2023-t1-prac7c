@@ -86,3 +86,11 @@
 {"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 10 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 20 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 100 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 100 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 100 received for addition","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 0 received for multiplication","service":"calculate-service"}
+{"level":"info","message":"Parameters 10 and 0 received for division","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}

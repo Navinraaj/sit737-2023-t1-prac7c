@@ -25,3 +25,4 @@
 {"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
 {"level":"error","message":"number 1 is incorrectly defined","service":"calculate-service"}
+{"level":"error","message":"Cannot divide by zero","service":"calculate-service"}

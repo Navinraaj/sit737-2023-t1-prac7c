@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kubectl port-forward mypod 8000:8080
+  name: mypod
   labels:
     run: mypod
 spec:
   containers:
-    - name: web1
-      image: navinraaj/sit737_2023_t1_prac5d:latest
+    - name: web3
+      image: navinraaj/sit737_2023_t1_prac7c:latest
       imagePullPolicy: Never
       ports:
         - containerPort: 8080

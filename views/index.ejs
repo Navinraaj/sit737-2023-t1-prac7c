@@ -52,12 +52,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     function postData(data) {
-      $.post('http://localhost:3000/api/calculator', data, (res)=> {
-        $('#result').text(res.data).css('color','green');
-      }).fail(function(err) {
-        $('#result').text(err.responseJSON.msg).css('color','red');
-      })
-    }
+  $.post('/api/calculator', data, (res)=> {
+    $('#result').text(res.data).css('color','green');
+  }).fail(function(err) {
+    $('#result').text(err.responseJSON.msg).css('color','red');
+  })
+}
     $(()=>{
       $(document).on('click','#submit',(e)=> {
         e.preventDefault();
