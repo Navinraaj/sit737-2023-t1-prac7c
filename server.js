@@ -86,6 +86,25 @@ app.get('/', checkAuthenticated, (req, res) => {
       res.redirect('/signup')
     }
   })
+
+// Route for the profile page
+app.get('/profile', (req, res) => {
+  if (req.user) {
+    res.render('profile', { user: req.user });
+  } else {
+    res.redirect('/login');
+  }
+});
+
+
+app.get('/quiz', (req, res) => {
+  if (req.user) {
+    res.render('quiz', { user: req.user });
+  } else {
+    res.redirect('/login');
+  }
+});
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs')
 })
