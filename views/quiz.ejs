@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <title>Quiz</title>
   <style>
     .question-container {
@@ -34,6 +40,50 @@
   </script>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/dashboard/view"> IQKIDS </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard/view">
+            <i class="fas fa-tachometer-alt"></i> HOME
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/calculator">
+            <i class="fa fa-calculator" aria-hidden="true"></i> CALCULATOR
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/quiz">
+            <i class="fa fa-question-circle" aria-hidden="true"></i> QUIZ
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- To this -->
+  <a class="nav-link" href="/profile">
+    <i class="fa fa-address-card" aria-hidden="true"></i> Profile
+  </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <div class="container">
     <h1 class="text-center">Quiz</h1>
     <form id="quiz-form" method="POST" action="/submitQuiz">
@@ -58,27 +108,32 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $('#quiz-form').on('submit', function (event) {
-      event.preventDefault();
-      const data = $(this).serializeArray();
-      const answers = {};
-      data.forEach((item) => {
-        answers[item.name] = item.value;
-      });
+  const data = $(this).serializeArray();
+  const answers = {};
+  data.forEach((item) => {
+    answers[item.name] = item.value;
+  });
 
-      let score = 0;
-      const correctAnswers = <%= JSON.stringify(correctAnswers) %>;
+  // Send the user's answers to the server
+  $.ajax({
+    url: '/submitQuiz',
+    method: 'POST',
+    data: answers,
+    success: function(data) {
+      // data is the response from the server
+      // in this case, it's an object with a 'score' property
+      console.log('Final Score:', data.score);
+      alert('Your score: ' + data.score);
+    },
+    error: function(error) {
+      console.error('An error occurred:', error);
+    }
+  });
 
-      for (let i = 0; i < correctAnswers.length; i++) {
-        const userAnswer = answers['question' + i];
-        console.log('Question', i + 1, 'Correct:', correctAnswers[i], 'User:', userAnswer);
-        if (userAnswer === correctAnswers[i]) {
-          score++;
-        }
-      }
+  // Prevent the form from being submitted the usual way
+  event.preventDefault();
+});
 
-      console.log('Final Score:', score);
-      alert('Your score: ' + score);
-    });
   </script>
 </body>
 </html>

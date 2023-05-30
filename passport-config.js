@@ -3,13 +3,15 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const fs = require("fs");
 
-
+getUserByEmail = async email => await User.findOne({ email: email });
+getUserById = async id => await User.findById(id);
 initialize = (passport, getUserByEmail, getUserById) => {
   const authenticateUser = async (email, password, done) => {
-    const user = getUserByEmail(email)
+    const user = await getUserByEmail(email) // Await here if getUserByEmail is a Promise
     if (user == null) {
       return done(null, false, { message: 'No user with that email' })
     }
+  
 
     try {
       if (await bcrypt.compare(password, user.password)) {
@@ -32,10 +34,16 @@ initialize = (passport, getUserByEmail, getUserById) => {
     }
   }
 
-  passport.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser))
+  passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' }, authenticateUser))
   passport.serializeUser((user, done) => done(null, user.id))
-  passport.deserializeUser((id, done) => {
-    return done(null, getUserById(id))
-  })
+
+  passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await getUserById(id);
+        done(null, user);
+    } catch (error) {
+        done(error);
+    }
+})
 }
 module.exports = initialize
