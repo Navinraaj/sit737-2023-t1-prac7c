@@ -1,0 +1,19 @@
+<!-- Author: Navin Raaj -->
+<!-- Last Modified Date: 2023-05-31 -->
+<!-- Description: EJS template for the dashboard page -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <!-- Include the common navbar -->
+    <%- include('./common/navbar') %>
+    <h1>Welcome, <%= user.name %>!</h1>
+    <h2>Your Quiz Scores</h2>
+    <% scores.forEach(score => { %>
+      <p><%= score.date.toDateString() %>: <%= score.score %></p>
+    <% }); %>
+  </body>
+</html>

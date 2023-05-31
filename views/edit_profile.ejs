@@ -1,3 +1,10 @@
+<!-- Author: Navin Raaj -->
+<!-- Last Modified Date: 2023-05-31 -->
+<!-- Description: EJS template for the edit profile page -->
+
+<!-- Include the common navbar -->
+<%- include('./common/navbar') %>
+
 <h1>Edit Profile</h1>
 <form action="/profile/edit" method="POST">
   <label for="name">Name</label>
@@ -11,3 +18,28 @@
 
   <input type="submit" value="Update Profile">
 </form>
+
+<form id="delete-profile-form" action="/profile/delete" method="POST" style="display: none;">
+  <input type="hidden" name="_method" value="DELETE">
+</form>
+
+<button id="delete-button" class="btn btn-danger">Delete Profile</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $('#delete-button').click(function() {
+    if(confirm("Are you sure you want to delete your profile? This cannot be undone.")) {
+      $('#delete-profile-form').submit();
+    }
+  });
+</script>
+
+<style>
+  #delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+</style>
