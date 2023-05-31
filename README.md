@@ -49,7 +49,7 @@ kubectl get services
 2. Select your project and cluster.
 3. Go to the Workloads tab and click on the deployed workload.
 4. In the Workload details view, click on the Service link.
-5. Access the application in a web browser using the external IP or domain associated with the service.
+5. Access the application in a webbrowser using the external IP or domain associated with the service.
 
 ## Automatic CI/CD with Google Cloud Build
 
