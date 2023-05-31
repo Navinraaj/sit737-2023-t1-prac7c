@@ -4,26 +4,90 @@
 
 <!-- Include the common navbar -->
 <%- include('./common/navbar') %>
+<div class="profile-edit-container">
+  <h1>Edit Profile</h1>
+  <form action="/profile/edit" method="POST" class="profile-form">
+    <div class="form-group">
+      <label for="name">Name : </label>
+      <input type="text" id="name" name="name" value="<%= user.name %>">
+    </div>
 
-<h1>Edit Profile</h1>
-<form action="/profile/edit" method="POST">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" value="<%= user.name %>">
+    <div class="form-group">
+      <label for="email">Email : </label>
+      <input type="email" id="email" name="email" value="<%= user.email %>">
+    </div>
 
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" value="<%= user.email %>">
+    <div class="form-group">
+      <label for="password">New Password : </label>
+      <input type="password" id="password" name="password" value="">
+    </div>
 
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password" value="<%= user.password %>">
+    <input type="submit" value="Update Profile" class="btn btn-primary">
+    <form id="delete-profile-form" action="/profile/delete" method="POST" style="display: none;">
+      <input type="hidden" name="_method" value="DELETE">
+    </form>
 
-  <input type="submit" value="Update Profile">
-</form>
+    <button id="delete-button" class="btn btn-danger">Delete Profile</button>
+  </form>
+</div>
 
-<form id="delete-profile-form" action="/profile/delete" method="POST" style="display: none;">
-  <input type="hidden" name="_method" value="DELETE">
-</form>
+<style>
+.profile-edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 
-<button id="delete-button" class="btn btn-danger">Delete Profile</button>
+.profile-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+</style>
+  </form>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -35,6 +99,26 @@
 </script>
 
 <style>
+  .profile-edit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .delete-profile-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   #delete-button {
     background-color: red;
     color: white;

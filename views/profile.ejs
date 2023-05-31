@@ -3,18 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Profile</title>
+    <style>
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .profile-container h1 {
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <%- include('./common/navbar') %>
-    <h1>User Profile</h1>
-    <p><strong>Username:</strong> <%= user.name %></p>
-    <p><strong>Email:</strong> <%= user.email %></p>
-    
-    <a href="/" class="btn btn-primary">Back to Home</a>
-    <a href="/editprofile" class="btn btn-primary">Edit</a>
+    <%- include('./common/navbar') %>
+    <div class="profile-container">
+        <h1>User Details</h1>
+        <p><strong>Username:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <a href="/dashboard/view" class="btn btn-primary">Back to Home</a>
+<a href="/editprofile" class="btn btn-primary">Edit</a>
+
+    </div>
 </body>
 </html>

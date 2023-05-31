@@ -6,14 +6,99 @@
 <html>
   <head>
     <title>Dashboard</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .chart-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 900px; /* Adjust the height as desired */
+        width: 900px; /* Adjust the width as desired */
+      }
+      canvas {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .youtube-video {
+        width: 560px; /* Adjust the width as desired */
+        height: 315px; /* Adjust the height as desired */
+        margin: 20px;
+      }
+    </style>
   </head>
   <body>
     <!-- Include the common navbar -->
     <%- include('./common/navbar') %>
-    <h1>Welcome, <%= user.name %>!</h1>
-    <h2>Your Quiz Scores</h2>
-    <% scores.forEach(score => { %>
-      <p><%= score.date.toDateString() %>: <%= score.score %></p>
-    <% }); %>
+    <h1 style="text-align: center;">Welcome, <%= user.name %>!</h1>
+    <h2 style="text-align: center;">Your Quiz Scores</h2>
+    <div style="display: flex; justify-content: center;">
+      <div style="text-align: center;">
+        <% if (scores.length > 0) {
+          const totalScore = scores.reduce((sum, score) => sum + score.score, 0);
+          const averageScore = totalScore / scores.length;
+          const averagePercentage = (averageScore / 5) * 100; // Assuming the maximum score is 5
+        %>
+          <p>Average Score: <%= averagePercentage.toFixed(2) %>%</p>
+          <% if (averagePercentage < 50) { %>
+            <p>Please revisit the below areas to improve your scores:</p>
+            <iframe class="youtube-video" src="https://www.youtube.com/embed/xzZLdYd78_8" frameborder="0" allowfullscreen></iframe>
+          <% } else if (averagePercentage < 80) { %>
+            <p>Great job! You're doing well.Vist below area to excel</p>
+            <iframe class="youtube-video" src="https://www.youtube.com/embed/9xWrG4xsHuc" frameborder="0" allowfullscreen></iframe>
+          <% } else { %>
+            <p>Congratulations! You're doing amazing.Vist below area to leapahead</p>
+            <iframe class="youtube-video" src="https://www.youtube.com/watch?v=SRDfyLqyB-c" frameborder="0" allowfullscreen></iframe>
+          <% } %>
+        <% } %>
+        <h2 style="text-align: center;">Progression Graph</h2>
+
+      </div>
+    </div>
+
+    <!-- Centered container for the bar chart -->
+    <div class="chart-container">
+      <canvas id="scoreChart"></canvas>
+    </div>
+
+    <script>
+      // Retrieve the scores from the server
+      const scoresData = JSON.parse('<%- JSON.stringify(scores.map(score => score.score)) %>');
+      const labelsData = JSON.parse('<%- JSON.stringify(scores.map((_, index) => `Score ${index + 1}`)) %>');
+
+      // Define color function based on score
+      const getBackgroundColor = score => {
+        if (score < 3) {
+          return 'rgba(255, 0, 0, 0.5)'; // Red
+        } else if (score === 3) {
+          return 'rgba(255, 165, 0, 0.5)'; // Orange
+        } else {
+          return 'rgba(0, 128, 0, 0.5)'; // Green
+        }
+      };
+
+      // Create the bar chart
+      const ctx = document.getElementById('scoreChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labelsData,
+          datasets: [{
+            label: 'Scores',
+            data: scoresData,
+            backgroundColor: scoresData.map(score => getBackgroundColor(score)),
+            borderColor: 'rgba(0, 0, 0, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
   </body>
 </html>
