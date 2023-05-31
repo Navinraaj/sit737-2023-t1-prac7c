@@ -1,63 +1,72 @@
-# Node.js Application on Kubernetes
+# IQKIDS Application on Kubernetes
 
-This is a simple Node.js application that is deployed on Kubernetes using Docker. This is a simple calculator application which uses JWT token for authentication.
+This is a Node.js application called IQKIDS, which is deployed on Kubernetes using Docker. IQKIDS is a kids' app that engages children with unique quizzes, stores their scores, and displays areas where they can improve. It also includes an inbuilt calculator. Users can delete and update their profiles once they are logged in.
 
-# Prerequisites
+## Prerequisites
 
-    Docker installed on your local machine
-    Kubernetes installed on your local machine
+- Docker installed on your local machine
+- Kubernetes installed on your local machine
+- Google Cloud Platform account
 
-# Getting Started
+## Getting Started
 
-    Clone the repository to your local machine.
-    git clone https://github.com/Navinraaj/sit737-2023-t1-prac7p
+Clone the repository to your local machine:
 
-# Build the Docker image.
+```bash
+git clone https://github.com/Navinraaj/sit737-2023-t1-prac7p
+```
 
-    docker build -t myimage:v1 .
+## Build the Docker image
 
-# Push the Docker image to a Docker registry.
+```bash
+docker build -t myimage:v1 .
+```
 
-    docker push myimage:v1
+## Push the Docker image to a Docker registry
 
-# Deploy the Kubernetes configuration.
+```bash
+docker tag myimage:v1 gcr.io/[PROJECT_ID]/myimage:v1
+docker push gcr.io/[PROJECT_ID]/myimage:v1
+```
 
-    kubectl apply -f deployment.yaml
-    kubectl apply -f service.yaml
+## Deploy the Kubernetes configuration
 
-# Verify that the application is running.
+```bash
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+```
 
-    kubectl get pods
-    kubectl get services
+## Verify that the application is running
 
-# Use the kubectl port-forward command to forward traffic from a local port to the Kubernetes service.
+```bash
+kubectl get pods
+kubectl get services
+```
 
-    kubectl port-forward service/myapp 8080:80
-    Access the application in a web browser by navigating to localhost:8080.
+## Access the application from Google Cloud
 
-# Updating the Application
+1. Open the Google Cloud Console and navigate to the Kubernetes Engine section.
+2. Select your project and cluster.
+3. Go to the Workloads tab and click on the deployed workload.
+4. In the Workload details view, click on the Service link.
+5. Access the application in a web browser using the external IP or domain associated with the service.
 
-    To update the application, modify the code for the Node.js application, build a new Docker image with a new version tag, and update
-    the Kubernetes deployment configuration to use the new image tag.
+## Automatic CI/CD with Google Cloud Build
 
-# Build the Docker image.
+Google Cloud Build can be set up to automatically build and deploy the application whenever changes are pushed to the Git repository. Follow these steps to enable automatic CI/CD:
 
-    docker build -t myimage:v2 .
+1. Set up a Google Cloud Build trigger by connecting your Git repository.
+2. Configure the trigger to build and push the Docker image whenever changes are pushed to the repository.
+3. Configure the trigger to deploy the updated image to your Kubernetes cluster.
 
-# Push the Docker image to a Docker registry.
+## Updating the Application
 
-    docker push myimage:v2
+To update the application, modify the code for the Node.js application, commit the changes, and push them to the Git repository. Google Cloud Build will automatically build and deploy the updated image to your Kubernetes cluster.
 
-# Update the Kubernetes deployment configuration.
-
-    kubectl set image deployment/myapp myapp=myimage:v2
-
-# Verify that the new version is running.
-
-    kubectl get pods
-    Contributing
+## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are welcome!
 
-**License
-This project is licensed under the MIT License - see the LICENSE file for details.**
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
