@@ -1,0 +1,33 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "gcr.io/sit737-23t1-manivannan-0f81f95/my-webapp:$COMMIT_SHA"
+      - "."
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "push"
+      - "gcr.io/sit737-23t1-manivannan-0f81f95/my-webapp:$COMMIT_SHA"
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "container"
+      - "clusters"
+      - "get-credentials"
+      - "hello-cluster"
+      - "--region"
+      - "australia-southeast1"
+      - "--project"
+      - "sit737-23t1-manivannan-0f81f95"
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - "set"
+      - "image"
+      - "deployment/my-webapp"
+      - "webapp=gcr.io/sit737-23t1-manivannan-0f81f95/my-webapp:$COMMIT_SHA"
+    env:
+      - "KUBECTL_VERSION=1.25"
+      - "CLOUDSDK_CONTAINER_CLUSTER=hello-cluster"
+      - "CLOUDSDK_COMPUTE_REGION=australia-southeast1"
+images:
+  - "gcr.io/sit737-23t1-manivannan-0f81f95/my-webapp:$COMMIT_SHA"
